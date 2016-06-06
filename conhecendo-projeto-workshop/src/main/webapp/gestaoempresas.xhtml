@@ -5,25 +5,29 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<meta charset="UTF-8"/>
+	<meta charset="UTF-8" />
 	<title>Gestão de Empresas</title>
 </h:head>
 <h:body>
-	<!-- semrpe que inicia a pagina a action abaixo é executada -->
-	<f:metadata>
-		<f:viewAction action="#{gestaoEmpresasBean.consultar}"/>
-	</f:metadata>
-	
-	<p:dataTable value="#{gestaoEmpresasBean.lstEmpresa}" var="empresa" emptyMessage="Nenhuma empresa cadastrada!">
-		<p:column headerText="Nome fantasia">
-			<h:outputText value="#{empresa.nomeFantasia}" />
-		</p:column>
-		<p:column headerText="Razão Social">
-			<h:outputText value="#{empresa.razaoSocial}" />
-		</p:column>
-		<p:column headerText="CNPJ">
-			<h:outputText value="#{empresa.cnpj}" />
-		</p:column>
-	</p:dataTable>
+	<h:form id="frm">
+		<!-- semrpe que inicia a pagina a action abaixo é executada -->
+		<f:metadata>
+			<f:viewAction action="#{gestaoEmpresasBean.consultar}" />
+		</f:metadata>
+
+		<p:dataTable value="#{gestaoEmpresasBean.lstEmpresa}" var="empresa"
+			emptyMessage="Nenhuma empresa cadastrada!" paginator="true" rows="10"
+			paginatorPosition="bottom">
+			<p:column headerText="Nome fantasia" sortBy="#{empresa.nomeFantasia}">
+				<h:outputText value="#{empresa.nomeFantasia}" />
+			</p:column>
+			<p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
+				<h:outputText value="#{empresa.razaoSocial}" />
+			</p:column>
+			<p:column headerText="CNPJ">
+				<h:outputText value="#{empresa.cnpj}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
 </h:body>
 </html>
